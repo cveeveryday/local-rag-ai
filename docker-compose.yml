@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  rag_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rag_application
+    ports:
+      - "8000:8000"
+    environment:
+      - PDF_DIRECTORY=/app/documents
+      - CHROMA_DB_PATH=/app/data/chroma_db
+      - LLM_API_URL=http://localhost:11434/api/generate
+      - LLM_MODEL=llama3
+    volumes:
+      - ./documents:/app/documents:ro
+      - ./data:/app/data
+      - ./logs:/app/logs
+    devices:
+      - /dev/kfd
+      - /dev/dri
+    group_add:
+      - video

@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+chromadb
+sentence-transformers
+PyPDF2
+python-multipart
+requests
+pydantic
+numpy
+torch
+transformers
+posthog==2.4.2
